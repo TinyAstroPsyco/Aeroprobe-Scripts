@@ -9,9 +9,9 @@ import csv
 from PIL import Image, ImageDraw, ImageFont
 
 # Give your paths here:
-input_csv = 'merged_data.csv'  # Csv file path of the flight data recorded
-image_directory = 'C:/Users/pooji/Downloads/Aeroprobe Testing - 0612/Images' # Path of the images captured by Aeroprobe
-output_directory = 'C:/Users/pooji/Downloads/Aeroprobe Testing - 0612/overlayed_images' # Path where the images with their associated data should be saved
+input_csv = 'C:/Users/pooji/Downloads/Aeroprobe Testing - 0612/Flight 2 final - Sheet1.csv'  # Csv file path of the flight data recorded
+image_directory = 'C:/Users/pooji/Downloads/Aeroprobe Testing - 0612/Image Distance Analysis Scripts/Distance Measurement Images/Measured_KRI - With Overlay' # Path of the images captured by Aeroprobe
+output_directory = 'C:/Users/pooji/Downloads/Aeroprobe Testing - 0612/Image Distance Analysis Scripts/Distance Measurement Images/Measured_KRI - Final Overlay' # Path where the images with their associated data should be saved
 font_path = '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'  # Path to a TTF font file
 
 # Data Overlay Function
@@ -40,11 +40,12 @@ def overlay_data(image_directory, csv_data):
             except IOError:
                 font = ImageFont.load_default()  # Fallback to default font if the specified font is not found
             # Define text position
-            text_position = (10, 10)  # You can adjust the position
+            text_position = (10, 150)  # You can adjust the position
             # Overlay text
             draw.text(text_position, text, font=font, fill="white")
             # Save the image
             image.save(output_path)
+            print(f'Image Saved')
 
 
 # Main Function
@@ -56,6 +57,7 @@ def main():
         # Read CSV file into a dictionary
         csv_data = {}
         with open(input_csv, mode='r', newline='') as csvfile:
+            print(f'File is opened')
             csvreader = csv.DictReader(csvfile)    
             for row in csvreader:
                 csv_data[row['Filename']] = {
@@ -66,6 +68,7 @@ def main():
                     'Altitude': row['Altitude'],
                     'Wind Speed': row['Wind Speed']
                 }
+            print(len(csv_data))
         overlay_data(image_directory, csv_data = csv_data)
         print(f"Overlayed images have been saved to : {output_directory}")
 

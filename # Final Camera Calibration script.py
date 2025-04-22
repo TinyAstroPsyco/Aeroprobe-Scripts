@@ -85,7 +85,7 @@ def undistort_images(undistorted_images_dir, camera_matrix, dist):
             print(f'Saved undistorted image: {undistorted_image_path}')
 
 def load_intrinsics():
-    root = 'C:/Users/pooji/Downloads/Aeroprobe Testing - 0612/Image Distance Analysis Scripts/Intrinsic_Parameters.npz'
+    root = 'C:/Users/pooji/Downloads/Aeroprobe Testing - 0612/Image Distance Analysis Scripts/Intrinsic_Parameters_1080.npz'
     intrinsics = np.load(root,mmap_mode = 'r')
     camera_matrix = intrinsics['camera_matrix']
     dist = intrinsics['dist_coeff']
@@ -166,16 +166,16 @@ if __name__ == "__main__":
     # Directory containing calibration images
     # image_dir = 'C:/Users/pooji/Downloads/Aeroprobe Testing - 0612/Image Distance Analysis Scripts/aeroprobe camera calib/'  # Replace with your image directory path
     # image_dir = 'C:/Users/pooji/Downloads/Aeroprobe Testing - 0612/Image Distance Analysis Scripts/Checker Board Calibration 1080P images'
-    image_dir = 'C:/Users/pooji/Downloads/Aeroprobe Testing - 0612/Image Distance Analysis Scripts/Distance Measurement Images'
+    image_dir = 'C:/Users/pooji/Downloads/Aeroprobe Testing - 0612/Image Distance Analysis Scripts/October Images'
     
     # undistort_images_dir = 'C:/Users/pooji/Downloads/Aeroprobe Testing - 0612/Image Distance Analysis Scripts/undistorted Images HD/'
-    undistort_images_dir = 'C:/Users/pooji/Downloads/Aeroprobe Testing - 0612/Image Distance Analysis Scripts/Distance Measurement Images/Undistorted'
+    undistort_images_dir = 'C:/Users/pooji/Downloads/Aeroprobe Testing - 0612/Image Distance Analysis Scripts/Oct_Flight/Altitude'
     
     # Calibrate the camera
     # camera_matrix, dist, rvecs, tvecs = calibrate_camera(image_dir, chessboard_size, criteria, object_points, img_points)
 
     # Save the calibration results
-    # np.savez('Intrinsic_Parameters', camera_matrix=camera_matrix, dist_coeff=dist)
+    # np.savez('Intrinsic_Parameters_1080', camera_matrix=camera_matrix, dist_coeff=dist)
 
     # Compute the reprojection error
     # compute_reprojection_error(object_points, img_points, rvecs, tvecs, camera_matrix, dist)
@@ -185,7 +185,7 @@ if __name__ == "__main__":
 
 
     # Undistort the images
-    undistort_images(undistort_images_dir, camera_matrix, dist)
+    # undistort_images(undistort_images_dir, camera_matrix, dist)
 
     # Get the distances in the image
-    # altitude(camera_matrix, dist, undistort_images_dir, img_points)
+    altitude(camera_matrix, dist, undistort_images_dir, img_points)

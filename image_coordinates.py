@@ -33,7 +33,7 @@ def draw_circle(event, x, y, flags, param):
         cv2.imshow('Image', img_resized)
 
 # Load the image
-img_path = 'C:/Users/pooji/Downloads/Aeroprobe Testing - 0612/overlayed_images - Aerial Images Only/nvcamtest_17575_s00_00680.jpg'
+img_path = 'C:/Users/pooji/Downloads/Aeroprobe Testing - 0612/Final Script/Annotated_nvcamtest_6357_s00_00048.jpg.jpg'
 img = cv2.imread(img_path)
 
 # Resize the image to fit within the screen dimensions
